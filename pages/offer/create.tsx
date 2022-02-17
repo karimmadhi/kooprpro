@@ -21,6 +21,7 @@ import Button from "components/Button";
 import DatePicker, { registerLocale } from "react-datepicker";
 import { fr } from "date-fns/locale";
 registerLocale("fr", fr);
+
 const IMAGE_BANKS_QUERY = gql`
   query imageBanks(
     $imageBanksTagNames: String
@@ -117,23 +118,6 @@ const ImageBankSection = ({ state, setState, errors }) => {
         <h3 className="text-lg font-medium leading-6">
           Selectionnez une photo de l'offre
         </h3>
-        {/* <div className="sm:flex sm:flex-col">
-                      <div className="relative self-start my-6 bg-gray-100 rounded-lg p-0.5 flex sm:mt-8">
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setImageType(0);
-                          }}
-                          className={
-                            imageType === 0
-                              ? "transition duration-100 w-1/2 py-2 text-sm font-medium text-gray-900 bg-white border-gray-200 rounded-md shadow-sm whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:z-10 sm:w-auto sm:px-8"
-                              : "transition duration-100 ml-0.5 w-1/2 border border-transparent rounded-md py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:z-10 sm:w-auto sm:px-8"
-                          }
-                        >
-                          Choisir parmis la banque d'image
-                        </button>
-                      </div>
-                    </div> */}
       </div>
       <ErrorNotification
         error={errors?.imageUrl && "Veuillez choisir la photo de l'offre"}
@@ -649,6 +633,12 @@ export default function createOffer({ me }) {
                       if (!state.description || state.description === "") {
                         errorsState.description = true;
                       }
+                      if (moment(state?.expireAtEvent).isBefore(moment())) {
+                        // if the expiredAt date of the offer is in the past, throw an error. Only expired date in the futur are allowed
+                        toast.error("La date ne peut pas être passée");
+                        errorsState.expireAtEvent;
+                      }
+                      // when the offer is not an event, some more verification are needed
                       if (state.isEvent === false) {
                         if (
                           !state.quantity ||
@@ -694,32 +684,6 @@ export default function createOffer({ me }) {
                         );
                         return;
                       }
-                      console.log({
-                        variables: {
-                          createOfferAdressId: state.address.value,
-                          createOfferBusinessId: me?.business?.id,
-                          createOfferCategoryIds:
-                            state.createOfferCategoryIds.map(
-                              (category) => category.value
-                            ),
-                          createOfferDescription: state.description,
-                          createOfferExpireAt: state.isEvent
-                            ? state.expireAtEvent.toDate()
-                            : moment().add(state.expireAt, "hours"),
-                          createOfferName: state.name,
-                          createOfferImageUrl: state.imageUrl,
-                          createOfferFile: state.file || null,
-                          createOfferOriginalPrice:
-                            (parseFloat(state.price) || 1) * 100,
-                          createOfferDiscount:
-                            parseInt(state.discount, 10) || 1,
-                          createOfferQuantity:
-                            parseInt(state.quantity, 10) || 1,
-                          createOfferCouponValidUntil:
-                            parseInt(state.couponValidUntil, 10) || 1,
-                          isEvent: state.isEvent,
-                        },
-                      });
                       const { data } = await createOffer({
                         variables: {
                           createOfferAdressId: state.address.value,
