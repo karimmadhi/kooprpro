@@ -127,7 +127,7 @@ const BusinessServicePage = ({ business }) => {
         <Section>
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
             <BusinessLeftNavigation business={business} />
-            <div className="space-y-6 sm:px-8 sm:m-4 lg:col-span-9">
+            <div className="px-8 space-y-6 lg:col-span-9">
               <h1>Choissisez vos services</h1>
               <p>Ces informations seront affichés dans l'application Koopr.</p>
               <div className="grid grid-cols-2 space-y-4">

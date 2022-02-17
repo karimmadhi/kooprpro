@@ -63,9 +63,9 @@ export type Business = {
   createdAt: Scalars['date'];
   description?: Maybe<Scalars['String']>;
   documents?: Maybe<Array<Maybe<Scalars['json']>>>;
+  etAccount?: Maybe<Scalars['json']>;
   etActivity?: Maybe<Scalars['json']>;
   etBusinessId?: Maybe<Scalars['String']>;
-  etPayouts?: Maybe<Scalars['json']>;
   favoritedBy?: Maybe<Array<Maybe<User>>>;
   fidelityCards?: Maybe<Array<Maybe<FidelityCard>>>;
   fidelityCount: Scalars['Int'];
@@ -82,6 +82,7 @@ export type Business = {
   name: Scalars['String'];
   offers?: Maybe<Array<Maybe<Offer>>>;
   offersViewCount: Scalars['Int'];
+  openingHours?: Maybe<Scalars['json']>;
   orderDetail?: Maybe<OrderBusinessDetail>;
   orderDetails?: Maybe<Array<Maybe<OrderBusinessDetail>>>;
   ordersAmount: Scalars['Int'];
@@ -211,9 +212,7 @@ export type Coupon = {
 
 export enum CouponStatus {
   Created = 'created',
-  Unused = 'unused',
-  Used = 'used',
-  WaitingPaiement = 'waitingPaiement'
+  Used = 'used'
 }
 
 
@@ -266,6 +265,8 @@ export type Mutation = {
   createOffer?: Maybe<Offer>;
   createOrder?: Maybe<Order>;
   createSection?: Maybe<Section>;
+  /** delete a payment card on EasyTransac */
+  deleteCard?: Maybe<User>;
   deleteCategory?: Maybe<Category>;
   deleteImageBank?: Maybe<ImageBank>;
   deleteOffer?: Maybe<Offer>;
@@ -388,11 +389,17 @@ export type MutationCreateOrderArgs = {
   clientIp: Scalars['String'];
   credit?: Maybe<Scalars['Boolean']>;
   fidelity?: Maybe<Scalars['Boolean']>;
+  saveCard?: Maybe<Scalars['Boolean']>;
 };
 
 
 export type MutationCreateSectionArgs = {
   name: Scalars['String'];
+};
+
+
+export type MutationDeleteCardArgs = {
+  cardAlias: Scalars['String'];
 };
 
 
@@ -478,6 +485,7 @@ export type MutationUpdateBusinessArgs = {
   iban?: Maybe<Scalars['String']>;
   id: Scalars['Int'];
   isValidated?: Maybe<Scalars['Boolean']>;
+  openingHours?: Maybe<Scalars['JSONObject']>;
   percentageKooprLg?: Maybe<Scalars['Int']>;
   percentageKooprMd?: Maybe<Scalars['Int']>;
   percentageKooprSm?: Maybe<Scalars['Int']>;
@@ -886,6 +894,7 @@ export type User = {
 
 
 export type UserCouponsArgs = {
+  expired?: Maybe<Scalars['Boolean']>;
   expiredAt?: Maybe<Scalars['Boolean']>;
   status?: Maybe<CouponStatus>;
 };
@@ -918,6 +927,20 @@ export type CategoriesQuery = (
     { __typename?: 'Category' }
     & Pick<Category, 'id' | 'name' | 'imageUrl'>
   )>>> }
+);
+
+export type UpdateBusinessOpeningHoursMutationVariables = Exact<{
+  id: Scalars['Int'];
+  openingHours?: Maybe<Scalars['JSONObject']>;
+}>;
+
+
+export type UpdateBusinessOpeningHoursMutation = (
+  { __typename?: 'Mutation' }
+  & { updateBusiness?: Maybe<(
+    { __typename?: 'Business' }
+    & Pick<Business, 'id' | 'openingHours'>
+  )> }
 );
 
 export type ResetPasswordMutationVariables = Exact<{
@@ -1014,7 +1037,7 @@ export type BusinessQuery = (
   { __typename?: 'Query' }
   & { business?: Maybe<(
     { __typename?: 'Business' }
-    & Pick<Business, 'id' | 'name' | 'address' | 'siret' | 'city' | 'zipCode' | 'description' | 'phone' | 'documents' | 'siteUrl' | 'country' | 'createdAt' | 'isValidated' | 'companyType' | 'logoUrl' | 'hasFidelity' | 'fidelityPercentage' | 'fidelityCount' | 'services' | 'backgroundImageUrl' | 'etActivity' | 'iban'>
+    & Pick<Business, 'id' | 'name' | 'address' | 'siret' | 'city' | 'zipCode' | 'description' | 'phone' | 'documents' | 'siteUrl' | 'country' | 'createdAt' | 'isValidated' | 'companyType' | 'logoUrl' | 'hasFidelity' | 'fidelityPercentage' | 'fidelityCount' | 'services' | 'backgroundImageUrl' | 'etActivity' | 'iban' | 'openingHours'>
     & { transfers?: Maybe<Array<Maybe<(
       { __typename?: 'Transfer' }
       & Pick<Transfer, 'id' | 'amount' | 'offersInfo' | 'createdAt'>
@@ -1481,6 +1504,41 @@ export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export const UpdateBusinessOpeningHoursDocument = gql`
+    mutation updateBusinessOpeningHours($id: Int!, $openingHours: JSONObject) {
+  updateBusiness(id: $id, openingHours: $openingHours) {
+    id
+    openingHours
+  }
+}
+    `;
+export type UpdateBusinessOpeningHoursMutationFn = Apollo.MutationFunction<UpdateBusinessOpeningHoursMutation, UpdateBusinessOpeningHoursMutationVariables>;
+
+/**
+ * __useUpdateBusinessOpeningHoursMutation__
+ *
+ * To run a mutation, you first call `useUpdateBusinessOpeningHoursMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateBusinessOpeningHoursMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateBusinessOpeningHoursMutation, { data, loading, error }] = useUpdateBusinessOpeningHoursMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      openingHours: // value for 'openingHours'
+ *   },
+ * });
+ */
+export function useUpdateBusinessOpeningHoursMutation(baseOptions?: Apollo.MutationHookOptions<UpdateBusinessOpeningHoursMutation, UpdateBusinessOpeningHoursMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateBusinessOpeningHoursMutation, UpdateBusinessOpeningHoursMutationVariables>(UpdateBusinessOpeningHoursDocument, options);
+      }
+export type UpdateBusinessOpeningHoursMutationHookResult = ReturnType<typeof useUpdateBusinessOpeningHoursMutation>;
+export type UpdateBusinessOpeningHoursMutationResult = Apollo.MutationResult<UpdateBusinessOpeningHoursMutation>;
+export type UpdateBusinessOpeningHoursMutationOptions = Apollo.BaseMutationOptions<UpdateBusinessOpeningHoursMutation, UpdateBusinessOpeningHoursMutationVariables>;
 export const ResetPasswordDocument = gql`
     mutation resetPassword($password: String!, $resetPasswordToken: String!) {
   resetPassword(password: $password, resetPasswordToken: $resetPasswordToken)
@@ -1739,6 +1797,7 @@ export const BusinessDocument = gql`
     backgroundImageUrl
     etActivity
     iban
+    openingHours
     transfers {
       id
       amount

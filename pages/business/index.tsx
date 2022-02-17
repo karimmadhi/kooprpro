@@ -46,6 +46,7 @@ export const BUSINESS_QUERY = gql`
       backgroundImageUrl
       etActivity
       iban
+      openingHours
       transfers {
         id
         amount
