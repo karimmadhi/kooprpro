@@ -7,7 +7,6 @@ module.exports = (phase) => {
   const env = {
     API_URL: (() => {
       if (process.env.API_URL) return process.env.API_URL;
-      return "https://koopr-server-prod.osc-fr1.scalingo.io";
     })(),
   };
   return {
