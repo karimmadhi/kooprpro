@@ -100,6 +100,9 @@ export type Business = {
   updatedAt?: Maybe<Scalars['date']>;
   viewCount: Scalars['Int'];
   zipCode?: Maybe<Scalars['String']>;
+  facebookUrl?: Maybe<Scalars['String']>;
+  instagramUrl?: Maybe<Scalars['String']>;
+  
 };
 
 
@@ -492,6 +495,8 @@ export type MutationUpdateBusinessArgs = {
   phone?: Maybe<Scalars['String']>;
   services?: Maybe<Scalars['json']>;
   siteUrl?: Maybe<Scalars['String']>;
+  facebookUrl?: Maybe<Scalars['String']>;
+  instagramUrl?: Maybe<Scalars['String']>;
 };
 
 
@@ -1037,7 +1042,7 @@ export type BusinessQuery = (
   { __typename?: 'Query' }
   & { business?: Maybe<(
     { __typename?: 'Business' }
-    & Pick<Business, 'id' | 'name' | 'address' | 'siret' | 'city' | 'zipCode' | 'description' | 'phone' | 'documents' | 'siteUrl' | 'country' | 'createdAt' | 'isValidated' | 'companyType' | 'logoUrl' | 'hasFidelity' | 'fidelityPercentage' | 'fidelityCount' | 'services' | 'backgroundImageUrl' | 'etActivity' | 'iban' | 'openingHours'>
+    & Pick<Business, 'id' | 'name' | 'address' | 'siret' | 'city' | 'zipCode' | 'description' | 'phone' | 'documents' | 'siteUrl' | 'country' | 'createdAt' | 'isValidated' | 'companyType' | 'logoUrl' | 'hasFidelity' | 'fidelityPercentage' | 'fidelityCount' | 'services' | 'backgroundImageUrl' | 'etActivity' | 'iban' | 'openingHours' | 'facebookUrl' | 'instagramUrl'>
     & { transfers?: Maybe<Array<Maybe<(
       { __typename?: 'Transfer' }
       & Pick<Transfer, 'id' | 'amount' | 'offersInfo' | 'createdAt'>
@@ -1092,6 +1097,8 @@ export type UpdateBusinessMutationVariables = Exact<{
   updateBusinessServices?: Maybe<Scalars['json']>;
   updateBusinessHasFidelity?: Maybe<Scalars['Boolean']>;
   iban?: Maybe<Scalars['String']>;
+  updateBusinessFacebookUrl?: Maybe<Scalars['String']>;
+  updateBusinessInstagramUrl?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -1099,7 +1106,7 @@ export type UpdateBusinessMutation = (
   { __typename?: 'Mutation' }
   & { updateBusiness?: Maybe<(
     { __typename?: 'Business' }
-    & Pick<Business, 'isValidated' | 'phone' | 'siteUrl' | 'companyType' | 'description' | 'services' | 'hasFidelity' | 'fidelityCount' | 'fidelityPercentage' | 'iban'>
+    & Pick<Business, 'isValidated' | 'phone' | 'siteUrl' | 'companyType' | 'description' | 'services' | 'hasFidelity' | 'fidelityCount' | 'fidelityPercentage' | 'iban' | 'facebookUrl' | 'instagramUrl'>
   )> }
 );
 
@@ -1141,7 +1148,7 @@ export type BusinessTransfersQuery = (
   { __typename?: 'Query' }
   & { business?: Maybe<(
     { __typename?: 'Business' }
-    & Pick<Business, 'id' | 'name' | 'address' | 'siret' | 'city' | 'zipCode' | 'description' | 'phone' | 'documents' | 'siteUrl' | 'country' | 'createdAt' | 'isValidated' | 'companyType' | 'logoUrl' | 'backgroundImageUrl'>
+    & Pick<Business, 'id' | 'name' | 'address' | 'siret' | 'city' | 'zipCode' | 'description' | 'phone' | 'documents' | 'siteUrl' | 'country' | 'createdAt' | 'isValidated' | 'companyType' | 'logoUrl' | 'backgroundImageUrl' | 'facebookUrl' | 'instagramUrl'>
     & { transfers?: Maybe<Array<Maybe<(
       { __typename?: 'Transfer' }
       & Pick<Transfer, 'id' | 'start' | 'end' | 'createdAt' | 'amount' | 'offersInfo' | 'transferDetails'>
@@ -1798,6 +1805,8 @@ export const BusinessDocument = gql`
     etActivity
     iban
     openingHours
+    facebookUrl
+    instagramUrl
     transfers {
       id
       amount
@@ -1931,7 +1940,7 @@ export type UpdateBusinessEtActivityMutationHookResult = ReturnType<typeof useUp
 export type UpdateBusinessEtActivityMutationResult = Apollo.MutationResult<UpdateBusinessEtActivityMutation>;
 export type UpdateBusinessEtActivityMutationOptions = Apollo.BaseMutationOptions<UpdateBusinessEtActivityMutation, UpdateBusinessEtActivityMutationVariables>;
 export const UpdateBusinessDocument = gql`
-    mutation updateBusiness($updateBusinessId: Int!, $updateBusinessIsValidated: Boolean, $updateBusinessPhone: String, $updateBusinessSiteUrl: String, $updateBusinessDescription: String, $updateBusinessCompanyType: String, $updateBusinessServices: json, $updateBusinessHasFidelity: Boolean, $iban: String) {
+    mutation updateBusiness($updateBusinessId: Int!, $updateBusinessIsValidated: Boolean, $updateBusinessPhone: String, $updateBusinessSiteUrl: String, $updateBusinessDescription: String, $updateBusinessCompanyType: String, $updateBusinessServices: json, $updateBusinessHasFidelity: Boolean, $iban: String, $updateBusinessFacebookUrl: String, $updateBusinessInstagramUrl: String) {
   updateBusiness(
     id: $updateBusinessId
     isValidated: $updateBusinessIsValidated
@@ -1942,6 +1951,8 @@ export const UpdateBusinessDocument = gql`
     services: $updateBusinessServices
     hasFidelity: $updateBusinessHasFidelity
     iban: $iban
+    facebookUrl: $updateBusinessFacebookUrl
+    instagramUrl: $updateBusinessInstagramUrl
   ) {
     isValidated
     phone
@@ -1953,6 +1964,8 @@ export const UpdateBusinessDocument = gql`
     fidelityCount
     fidelityPercentage
     iban
+    facebookUrl
+    instagramUrl
   }
 }
     `;
@@ -2079,6 +2092,8 @@ export const BusinessTransfersDocument = gql`
     companyType
     logoUrl
     backgroundImageUrl
+    facebookUrl
+    instagramUrl
     transfers(transferId: $transferId) {
       id
       start

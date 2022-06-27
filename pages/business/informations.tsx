@@ -33,6 +33,8 @@ export const UPDATE_BUSINESS_MUTATION = gql`
     $updateBusinessServices: json
     $updateBusinessHasFidelity: Boolean
     $iban: String
+    $updateFacebookUrl: String
+    $updateInstagramUrl: String
   ) {
     updateBusiness(
       id: $updateBusinessId
@@ -44,6 +46,8 @@ export const UPDATE_BUSINESS_MUTATION = gql`
       services: $updateBusinessServices
       hasFidelity: $updateBusinessHasFidelity
       iban: $iban
+      facebookUrl: $updateFacebookUrl
+      instagramUrl: $updateInstagramUrl
     ) {
       isValidated
       phone
@@ -55,6 +59,8 @@ export const UPDATE_BUSINESS_MUTATION = gql`
       fidelityCount
       fidelityPercentage
       iban
+      facebookUrl
+      instagramUrl
     }
   }
 `;
@@ -333,8 +339,8 @@ const BusinessInformationsPage = ({ business }) => {
                     </h3>
                   </div>
 
-                  <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-12">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-6">
+                    <div className="col-span-6">
                       <TextArea
                         onChange={(e) => {
                           setState({ ...state, description: e.target.value });
@@ -344,7 +350,7 @@ const BusinessInformationsPage = ({ business }) => {
                         alert={!state.description}
                       />
                     </div>
-                    <div className="col-span-5 md:col-span-3">
+                    <div className="sm:col-span-3">
                       <TextInput
                         onChange={(e) => {
                           setState({ ...state, phone: e.target.value });
@@ -354,13 +360,31 @@ const BusinessInformationsPage = ({ business }) => {
                         alert={!state.phone}
                       />
                     </div>
-                    <div className="col-span-8">
+                    <div className="sm:col-span-3">
                       <TextInput
                         onChange={(e) => {
                           setState({ ...state, siteUrl: e.target.value });
                         }}
                         label="Site internet"
                         value={state.siteUrl}
+                      />
+                    </div>
+                    <div className="sm:col-span-3">
+                      <TextInput
+                        onChange={(e) => {
+                          setState({ ...state, facebookUrl: e.target.value });
+                        }}
+                        label="Page Facebook"
+                        value={state.facebookUrl}
+                      />
+                    </div>
+                    <div className="sm:col-span-3">
+                      <TextInput
+                        onChange={(e) => {
+                          setState({...state, instagramUrl: e.target.value});
+                        }}
+                        label="Page Instagram"
+                        value={state.instagramUrl}
                       />
                     </div>
 
@@ -398,6 +422,8 @@ const BusinessInformationsPage = ({ business }) => {
                           updateBusinessSiteUrl: state?.siteUrl,
                           updateBusinessPhone: state?.phone,
                           updateBusinessDescription: state?.description,
+                          updateBusinessFacebookUrl: state?.facebookUrl,
+                          updateBusinessInstagramUrl: state?.instagramUrl,
                         },
                       });
                       toast.success("Modification enregistrée.");

@@ -27,6 +27,7 @@ module.exports = (phase) => {
       domains: [
         "koopr.fra1.cdn.digitaloceanspaces.com",
         "koopr.fra1.digitaloceanspaces.com",
+        "s3-space-1.ams3.digitaloceanspaces.com",
       ],
       imageSizes: [64, 128],
       loader: "default",
