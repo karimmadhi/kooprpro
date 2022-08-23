@@ -120,7 +120,7 @@ export const BusinessHeader = ({ business }) => {
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           <span className="block">{business?.name}</span>
-          <span className="block text-orange-600">
+          <span className="block text-OFLO_orange">
             {business.isValidated === false
               ? "Validation de votre établissement"
               : "Gestion de votre établissement"}
@@ -204,6 +204,7 @@ const BusinessPage = ({ business }) => {
                           value={state.iban}
                           alert={!state.iban || state.iban.length != 27}
                           error={!state.iban || state.iban.length != 27}
+                          disabled={true}
                         />
                       </div>
                       <div className="col-span-3 sm:col-span-2">
