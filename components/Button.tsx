@@ -3,7 +3,7 @@ import React from "react";
 export default function Button({
   loading = false,
   disabled = false,
-  className = "relative inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-orange-600 border border-transparent rounded-md shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500",
+  className = "relative inline-flex justify-center px-4 py-2 text-sm font-medium text-OFLO_darkblue bg-OFLO_pastel border border-transparent rounded-md shadow-sm hover:bg-OFLO_purple hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-OFLO_purple",
   onClick,
   children,
   style = {},

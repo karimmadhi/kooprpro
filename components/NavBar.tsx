@@ -25,8 +25,8 @@ const NavItem = ({ page, index }) => {
       <a
         className={`text-base font-medium   ${
           isActualPage()
-            ? "text-gray-900 hover:text-gray-500 border-orange-500 border-b-2"
-            : "text-gray-500 hover:text-gray-900"
+            ? "text-OFLO_darkblue border-OFLO_pastel border-b-2"
+            : "text-gray-500 hover:text-OFLO_darkblue hover:border-b-2 hover:border-OFLO_purple"
         }`}
         // className={`px-4 h-full flex items-center justify-center text-xs border-b-2 text-center cursor-pointer ${
         //   router?.pathname === page?.path

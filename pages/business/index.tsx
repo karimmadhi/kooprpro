@@ -116,23 +116,23 @@ const UPDATE_BUSINESS_ET_ACTIVITY = gql`
 export const BusinessHeader = ({ business }) => {
   if (!business) return null;
   return (
-    <div className="mb-8 bg-gray-50">
+    <div className="mb-8 bg-OFLO_darkblue">
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h2 className="text-3xl font-extrabold tracking-tight text-OFLO_purple sm:text-4xl">
           <span className="block">{business?.name}</span>
-          <span className="block text-OFLO_orange">
+          <span className="block text-white">
             {business.isValidated === false
               ? "Validation de votre établissement"
               : "Gestion de votre établissement"}
           </span>
         </h2>
-        <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
-          <div className="flex flex-col p-4 rounded-md shadow">
-            <h2 className="mb-2">Besoin d'aide ?</h2>
-            <a href="mailto:contact@koopr.app" className="text-blue-300">
-              Email: contact@koopr.app
+        <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0 ">
+          <div className="flex flex-col p-4 rounded-md shadow bg-OFLO_pastel">
+            <h2 className="mb-2 text-OFLO_darkblue">Besoin d'aide ?</h2>
+            <a href="mailto:contact@offreslocales.fr" className="text-OFLO_darkblue">
+              Email: contact@offreslocales.fr
             </a>
-            <a href="tel:+33651364383" className="text-indigo-300">
+            <a href="tel:+33651364383" className="text-OFLO_darkblue">
               Telephone: 06 51 36 43 83
             </a>
           </div>
@@ -162,10 +162,10 @@ const BusinessPage = ({ business }) => {
             <BusinessLeftNavigation business={business} />
             <div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
               <form>
-                <div className="shadow sm:rounded-md sm:overflow-hidden">
+                <div className="shadow border-OFLO_darkblue border border-solid sm:rounded-md sm:overflow-hidden">
                   <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                     <div>
-                      <h3 className="text-lg font-medium leading-6 text-gray-900">
+                      <h3 className="text-2xl font-medium leading-6 text-OFLO_purple">
                         Informations de base
                       </h3>
                     </div>
@@ -242,8 +242,8 @@ const BusinessPage = ({ business }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
-                    <button
+                  <div className="px-4 py-3 text-right bg-OFLO_darkblue sm:px-6">
+                    <Button
                       onClick={async (e) => {
                         e.preventDefault();
                         await updateBusiness({
@@ -263,18 +263,17 @@ const BusinessPage = ({ business }) => {
                         });
                         toast.success("Modification enregistrée.");
                       }}
-                      className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-orange-600 border border-transparent rounded-md shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                     >
                       {updateBusinessEtActivityLoading ? "..." : "Modifier"}
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </form>
               <form>
-                <div className="shadow sm:rounded-md sm:overflow-hidden">
+                <div className="shadow border border-OFLO_darkblue border-solid sm:rounded-md sm:overflow-hidden">
                   <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                     <div>
-                      <h3 className="text-lg font-medium leading-6 text-gray-900">
+                      <h3 className="text-2xl font-medium leading-6 text-OFLO_purple">
                         Vos informations personnelles
                       </h3>
                     </div>
@@ -340,7 +339,7 @@ const BusinessPage = ({ business }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                  <div className="px-4 py-3 text-right bg-OFLO_darkblue sm:px-6">
                     <Button
                       loading={updateUserLoading}
                       onClick={async (e) => {
