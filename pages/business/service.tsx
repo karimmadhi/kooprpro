@@ -128,9 +128,10 @@ const BusinessServicePage = ({ business }) => {
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
             <BusinessLeftNavigation business={business} />
             <div className="px-8 space-y-6 lg:col-span-9">
-              <h1>Choissisez vos services</h1>
-              <p>Ces informations seront affichés dans l'application Koopr.</p>
-              <div className="grid grid-cols-2 space-y-4">
+              <h1 className="text-3xl uppercase font-medium leading-6 text-OFLO_orange"
+              >Choissisez vos services</h1>
+              <p>Sélectionnez les services que vous proposez dans votre établissement.</p>
+              <div className="grid grid-cols-4">
                 {services.map((service, index) => {
                   return (
                     <div key={index}>
@@ -169,7 +170,7 @@ const BusinessServicePage = ({ business }) => {
                                   />
                                   <label
                                     htmlFor={service.name + item}
-                                    className="block ml-2 text-sm text-gray-900"
+                                    className="block ml-2 text-sm font-light text-gray-900"
                                   >
                                     {item.charAt(0).toUpperCase() +
                                       item.slice(1)}

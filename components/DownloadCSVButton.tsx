@@ -9,7 +9,7 @@ export default function DownloadCSVButton({ data, filename }) {
       data={data}
       filename={filename}
       target="_blank"
-      className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500`}
+      className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-OFLO_darkblue bg-OFLO_pastel hover:text-white hover:bg-OFLO_purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-OFLO_purple`}
     >
       Export Excel
     </CSVLink>

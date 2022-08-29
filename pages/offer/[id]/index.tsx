@@ -93,7 +93,7 @@ const OfferPage = ({ offer }) => {
       <div className="py-10 ">
         <Container>
           <Link href="/offer">
-            <span className="flex flex-row mb-2 -mt-2 font-medium text-blue-400 cursor-pointer hover:text-blue-600">
+            <span className="flex flex-row mb-2 -mt-2 font-medium text-OFLO_orange cursor-pointer hover:text-OFLO_darkblue">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -113,28 +113,28 @@ const OfferPage = ({ offer }) => {
           </Link>
           <Section>
             <div className="lg:flex lg:items-center lg:justify-between">
-              <div className="flex-1 min-w-0 ">
-                <div className="flex flex-row items-center">
+              <div className="flex-1 min-w-0 justify-center">
+                <div className="flex flex-row items-center ">
                   <div
                     className={`rounded-full bg-gray-600 w-3 h-3 mr-2 ${
                       offer.isActive ? "bg-green-500" : "bg-red-500"
                     } `}
                   />
-                  <h2 className="text-2xl font-bold leading-7 sm:text-3xl sm:truncate">
+                  <h2 className="text-2xl font-bold uppercase leading-7 sm:text-3xl sm:truncate">
                     {offer.name}
                   </h2>
                 </div>
                 <div className="flex flex-col mt-1 sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-                  <div className="flex items-center mt-2 text-sm text-gray-300">
+                  <div className="flex items-center mt-2 text-sm text-black">
                     <CalendarIcon
-                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-500"
+                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-black"
                       aria-hidden="true"
                     />
                     Crée le {displayDateTime(offer?.createdAt)}
                   </div>
-                  <div className="flex items-center mt-2 text-sm text-gray-300">
+                  <div className="flex items-center mt-2 text-sm text-black">
                     <CalendarIcon
-                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-500"
+                      className="flex-shrink-0 mr-1.5 h-5 w-5 text-black"
                       aria-hidden="true"
                     />
                     Expire le {displayDateTime(offer?.expireAt)}
@@ -194,22 +194,11 @@ const OfferPage = ({ offer }) => {
         </Container>
         <Container>
           <Section>
-            <div className="flex flex-col justify-between w-full pb-4 border-b border-accents3 sm:flex-row">
-              <div className="flex flex-row">
-                <div className="flex-none mr-4">
-                  <img
-                    src={offer?.imageUrl}
-                    alt="Photo de l'offre"
-                    width={128}
-                    height={128}
-                    className="object-contain rounded max-h-64"
-                  />
-                </div>
-              </div>
+            <div className="flex flex-col justify-between w-full pb-4 border-accents3 sm:flex-row">
               {offer.isFlagship && (
                 <div className="py-2 mt-4 sm:mt-0">
                   <div>
-                    <h2>Offre Phare</h2>
+                    <h2 className="uppercase font-bold">Offre Phare</h2>
                   </div>
                 </div>
               )}
@@ -220,18 +209,27 @@ const OfferPage = ({ offer }) => {
                   </div>
                 )}
                 <div>
-                  <p>Quantités vendu {offer.isFlagship && "aujourd'hui"}</p>
-                  <p className="text-right">
+                  <p className="text-xl">Quantité vendue {offer.isFlagship && "aujourd'hui"}</p>
+                  <p className="text-xl text-center">
                     {offer.quantity - offer?.quantityLeft} / {offer?.quantity}
                   </p>
                 </div>
               </div>
             </div>
+            <div className="flex border-b border-accents mr-4 justify-center pb-4">
+              <img
+                src={offer?.imageUrl}
+                alt="Photo de l'offre"
+                width={256}
+                height={256}
+                className="object-contain rounded max-h-64"
+              />
+            </div>
             <div className="mt-4">
               <dl className="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3">
                 <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
                   <dt>
-                    <div className="absolute p-3 bg-indigo-500 rounded-md">
+                    <div className="absolute p-3 bg-OFLO_purple rounded-md">
                       <CursorClickIcon className="w-6 h-6 text-white" />
                     </div>
                     <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -278,7 +276,7 @@ const OfferPage = ({ offer }) => {
 
                 <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
                   <dt>
-                    <div className="absolute p-3 bg-indigo-500 rounded-md">
+                    <div className="absolute p-3 bg-OFLO_purple rounded-md">
                       <ShoppingCartIcon className="w-6 h-6 text-white" />
                     </div>
                     <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -322,7 +320,7 @@ const OfferPage = ({ offer }) => {
 
                 <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
                   <dt>
-                    <div className="absolute p-3 bg-indigo-500 rounded-md">
+                    <div className="absolute p-3 bg-OFLO_purple rounded-md">
                       <CurrencyEuroIcon className="w-6 h-6 text-white" />
                     </div>
                     <p className="ml-16 text-sm font-medium text-gray-500 truncate">

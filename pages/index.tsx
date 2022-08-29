@@ -92,7 +92,7 @@ export default function Home({ me }) {
       <div className="py-10">
         <Container>
           <Section>
-            <h2 className="h-2 text-center title is-2">{me?.business?.name}</h2>
+            <h2 className="h-1 text-OFLO_orange font-bold uppercase text-center title is-2">{me?.business?.name}</h2>
             <div className="mt-4">
               <div className="flex flex-col sm:flex-row sm:justify-between">
                 {/* <Link href="/offer">
@@ -136,9 +136,9 @@ export default function Home({ me }) {
               </div>
             </div>
             <dl className="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg drop-shadow-md hover:drop-shadow-xl sm:pt-6 sm:px-6">
                 <dt>
-                  <div className="absolute p-3 bg-indigo-500 rounded-md">
+                  <div className="absolute p-3 bg-OFLO_purple rounded-md">
                     <CursorClickIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -183,9 +183,9 @@ export default function Home({ me }) {
                 </dd>
               </div>
 
-              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg drop-shadow-md hover:drop-shadow-xl sm:pt-6 sm:px-6">
                 <dt>
-                  <div className="absolute p-3 bg-indigo-500 rounded-md">
+                  <div className="absolute p-3 bg-OFLO_purple rounded-md">
                     <ShoppingCartIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -227,9 +227,9 @@ export default function Home({ me }) {
                 </dd>
               </div>
 
-              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg drop-shadow-md hover:drop-shadow-xl sm:pt-6 sm:px-6">
                 <dt>
-                  <div className="absolute p-3 bg-indigo-500 rounded-md">
+                  <div className="absolute p-3 bg-OFLO_purple rounded-md">
                     <CurrencyEuroIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -273,9 +273,9 @@ export default function Home({ me }) {
                     </div> */}
                 </dd>
               </div>
-              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg drop-shadow-md hover:drop-shadow-xl sm:pt-6 sm:px-6">
                 <dt>
-                  <div className="absolute p-3 bg-indigo-500 rounded-md">
+                  <div className="absolute p-3 bg-OFLO_purple rounded-md">
                     <CurrencyEuroIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -319,9 +319,9 @@ export default function Home({ me }) {
                     </div> */}
                 </dd>
               </div>
-              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+              <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg drop-shadow-md hover:drop-shadow-xl sm:pt-6 sm:px-6">
                 <dt>
-                  <div className="absolute p-3 bg-indigo-500 rounded-md">
+                  <div className="absolute p-3 bg-OFLO_purple rounded-md">
                     <DuplicateIcon className="w-6 h-6 text-white" />
                   </div>
                   <p className="ml-16 text-sm font-medium text-gray-500 truncate">
@@ -371,6 +371,9 @@ export default function Home({ me }) {
                   }
                 />
               )}
+            </div>
+            <div className="pt-10">
+              <h2>Mes ventes du mois</h2>
             </div>
             <Table
               data={data?.business?.orderDetails}

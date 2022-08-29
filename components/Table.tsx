@@ -88,7 +88,7 @@ export const Table = ({
                   return (
                     <th
                       key={index}
-                      className={`px-4 py-3 text-xs font-light text-left  uppercase border-t border-b sticky top-14 bg-white`}
+                      className={`px-4 py-3 text-xs font-bold text-left uppercase border-t border-b sticky top-14 bg-white`}
                     >
                       {col?.value}
                     </th>
@@ -118,7 +118,7 @@ export const Table = ({
                     e?.stopPropagation();
                     onRowClick && onRowClick(row);
                   }}
-                  className="cursor-pointer hover:bg-gray-200"
+                  className="cursor-pointer hover:text-white hover:bg-OFLO_purple border rounded-md "
                 >
                   {columns &&
                     columns?.map((col) => {

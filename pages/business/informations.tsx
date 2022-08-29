@@ -109,10 +109,10 @@ const BusinessInformationsPage = ({ business }) => {
           <BusinessLeftNavigation business={business} />
           <div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
             <form action="#" method="POST">
-              <div className="shadow sm:rounded-md sm:overflow-hidden">
+              <div className="shadow border border-solid border-OFLO_darkblue sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                   <div>
-                    <h3 className="flex items-center justify-start text-lg font-medium leading-6 text-gray-900">
+                    <h3 className="text-2xl font-medium leading-6 text-OFLO_orange">
                       {/* {(!business.logoUrl || !business.backgroundImageUrl) && (
                         <span className=" h-6 px-0.5 py-1 mr-2 text-xs text-white bg-red-500 "></span>
                       )} */}
@@ -297,7 +297,7 @@ const BusinessInformationsPage = ({ business }) => {
                 <ErrorNotification
                   error={updateBusinessError && "Une erreur s'est produite"}
                 />
-                <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                <div className="px-4 py-3 text-right bg-OFLO_darkblue sm:px-6">
                   <Button
                     loading={uploadBackgroundImageLoading || uploadLogoLoading}
                     onClick={async (e) => {
@@ -321,17 +321,17 @@ const BusinessInformationsPage = ({ business }) => {
                       toast.success("Modification enregistrée.");
                     }}
                   >
-                    Enregistrer
+                    Modifier
                   </Button>
                 </div>
               </div>
             </form>
 
             <form>
-              <div className="shadow sm:rounded-md sm:overflow-hidden">
+              <div className="shadow border boder-solid border-OFLO_darkblue sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                   <div>
-                    <h3 className="flex items-center justify-start text-lg font-medium leading-6 text-gray-900">
+                    <h3 className="text-2xl font-medium leading-6 text-OFLO_orange">
                       {/* {(!business.description || !business.phone) && (
                         <span className=" h-6 px-0.5 py-1 mr-2 text-xs text-white bg-red-500 "></span>
                       )} */}
@@ -411,7 +411,7 @@ const BusinessInformationsPage = ({ business }) => {
                     "Une erreur s'est produite"
                   }
                 />
-                <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                <div className="px-4 py-3 text-right bg-OFLO_darkblue sm:px-6">
                   <Button
                     loading={updateBusinessLoading}
                     onClick={async (e) => {
@@ -436,10 +436,10 @@ const BusinessInformationsPage = ({ business }) => {
             </form>
 
             <form>
-              <div className="shadow sm:rounded-md sm:overflow-hidden">
+              <div className="shadow border border-solid border-OFLO_darkblue sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                   <div>
-                    <h3 className="flex items-center justify-start text-lg font-medium leading-6 text-gray-900">
+                    <h3 className="text-2xl font-medium leading-6 text-OFLO_orange">
                       {/* {(!business.description || !business.phone) && (
                         <span className=" h-6 px-0.5 py-1 mr-2 text-xs text-white bg-red-500 "></span>
                       )} */}
@@ -520,7 +520,7 @@ const BusinessInformationsPage = ({ business }) => {
                     "Une erreur s'est produite"
                   }
                 />
-                <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
+                <div className="px-4 py-3 text-right bg-OFLO_darkblue sm:px-6">
                   <Button
                     onClick={async (e) => {
                       e.preventDefault();

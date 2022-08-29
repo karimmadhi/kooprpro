@@ -83,12 +83,12 @@ export const EditableHours = ({ business }) => {
   // react state containing the opening hours. If openingHours not set, use an empty array for default
   const [hours, setHours] = useState(business?.openingHours?.hours || []);
   return (
-    <div className="w-full">
+    <div /*className="w-full"*/>
       {days.map((day, index) => {
         return (
-          <div key={index} className="grid grid-cols-4 space-y-4 items-center">
+          <div key={index} className="grid grid-cols-4 space-y-4 sm:max-w-xs">
             <span
-              className="text-gray-800 col-span-1"
+              className="text-gray-800 "
               style={{
                 fontSize: 14,
               }}
@@ -146,7 +146,7 @@ export const EditableHours = ({ business }) => {
 const DayHours = ({ hours, setHours, day, dayHours, setDayHours }) => {
   return (
     <div
-      style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      style={{ display: "flex", alignItems: "center"}}
     >
       {dayHours?.map((dailyHours: any, index: number) => {
         if (index < 2)
@@ -191,7 +191,7 @@ const DayHours = ({ hours, setHours, day, dayHours, setDayHours }) => {
       {dayHours.length > 0 && (
         <>
           <div
-            style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem" }}
+            style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem"}}
             onClick={() => {
               let tmpHours = [...dayHours];
               if (tmpHours.length === 0) return;
@@ -216,7 +216,7 @@ const DayHours = ({ hours, setHours, day, dayHours, setDayHours }) => {
         </>
       )}
       {dayHours.length < 2 && (
-        <div style={{ paddingLeft: "1rem", minWidth: "14rem" }}>
+        <div style={{ paddingLeft: "1rem", minWidth: "2rem", }}>
           <a
             onClick={() => {
               let tmpHours = [...dayHours];
@@ -225,12 +225,12 @@ const DayHours = ({ hours, setHours, day, dayHours, setDayHours }) => {
               setDayHours(tmpHours);
             }}
             style={{
-              color: "blue",
+              color: "blue", 
               fontSize: 14,
               cursor: "pointer",
             }}
           >
-            Ajouter d’autres horaires
+            Ajouter
           </a>
         </div>
       )}

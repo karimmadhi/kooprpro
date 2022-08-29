@@ -119,7 +119,7 @@ export const BusinessHeader = ({ business }) => {
     <div className="mb-8 bg-OFLO_darkblue">
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 className="text-3xl font-extrabold tracking-tight text-OFLO_purple sm:text-4xl">
-          <span className="block">{business?.name}</span>
+          <span className="block uppercase">{business?.name}</span>
           <span className="block text-white">
             {business.isValidated === false
               ? "Validation de votre établissement"
@@ -165,7 +165,7 @@ const BusinessPage = ({ business }) => {
                 <div className="shadow border-OFLO_darkblue border border-solid sm:rounded-md sm:overflow-hidden">
                   <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                     <div>
-                      <h3 className="text-2xl font-medium leading-6 text-OFLO_purple">
+                      <h3 className="text-2xl uppercase font-medium leading-6 text-OFLO_orange">
                         Informations de base
                       </h3>
                     </div>
@@ -273,7 +273,7 @@ const BusinessPage = ({ business }) => {
                 <div className="shadow border border-OFLO_darkblue border-solid sm:rounded-md sm:overflow-hidden">
                   <div className="px-4 py-6 space-y-6 bg-white sm:p-6">
                     <div>
-                      <h3 className="text-2xl font-medium leading-6 text-OFLO_purple">
+                      <h3 className="text-2xl uppercase font-medium leading-6 text-OFLO_orange">
                         Vos informations personnelles
                       </h3>
                     </div>

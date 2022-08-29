@@ -75,7 +75,8 @@ const BusinessTransferPage = ({ business }) => {
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
             <BusinessLeftNavigation business={business} />
             <div className="px-8 space-y-6 lg:col-span-9">
-              <h1>Ajouter une nouvelle adresses</h1>
+              <h1 className="text-3xl uppercase font-medium leading-6 text-OFLO_orange"
+              >Ajouter une nouvelle adresses</h1>
               <p>
                 Ces addresses seront disponibles lors de la création d'une
                 nouvelle offre.

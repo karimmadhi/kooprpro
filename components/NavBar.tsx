@@ -88,7 +88,7 @@ export default function NavBar({ pages, me }: NavProps) {
             ))}
             {me && (
               <button
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-transparent rounded-md shadow-sm hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                className= "relative inline-flex justify-center px-4 py-2 text-sm font-medium text-OFLO_darkblue bg-OFLO_pastel border border-transparent rounded-md shadow-sm hover:bg-OFLO_purple hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-OFLO_purple"
                 onClick={(e) => {
                   signOut();
                 }}

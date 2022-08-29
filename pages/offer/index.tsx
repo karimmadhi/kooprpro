@@ -54,7 +54,7 @@ export default function offers({ me }) {
       <div className="py-10">
         <Container>
           <Section>
-            <h2 className="title is-2">Offres</h2>
+            <h1 className="title is-2 text-OFLO_orange uppercase font-bold">Offres</h1>
             <p className="text-accents6">Liste de vos offres</p>
           </Section>
           <div className="flex items-center justify-between">

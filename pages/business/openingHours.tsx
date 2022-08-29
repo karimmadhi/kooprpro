@@ -38,10 +38,11 @@ export default function OpeningHours({ me }) {
             <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
               <BusinessLeftNavigation business={data?.business} />
               <div className="px-8 space-y-6 lg:col-span-9">
-                <h1>Horaires de votre établissement</h1>
+                <h1 className="text-3xl uppercase font-medium leading-6 text-OFLO_orange"
+                >Horaires de votre établissement</h1>
                 <p>
-                  Ces informations seront visibles sur l'application. Veuillez
-                  les mettres à jour régulièrement
+                  Ces informations seront visibles sur l'application. Veillez
+                  à les mettres à jour régulièrement.
                 </p>
 
                 <EditableHours business={data?.business} />
