@@ -349,6 +349,7 @@ const BusinessInformationsPage = ({ business }) => {
                         value={state.description}
                         alert={!state.description}
                       />
+                      <p className="mt-1 text-sm text-gray-400">Décrivez et faites découvrir votre activité à vos clients.</p>
                     </div>
                     <div className="sm:col-span-3">
                       <TextInput
@@ -359,6 +360,7 @@ const BusinessInformationsPage = ({ business }) => {
                         value={state.phone}
                         alert={!state.phone}
                       />
+                      <p className="mt-1 text-sm text-gray-400">Sur quel numéro souhaitez-vous qu'un client vous appelle ?</p>
                     </div>
                     <div className="sm:col-span-3">
                       <TextInput
@@ -368,6 +370,7 @@ const BusinessInformationsPage = ({ business }) => {
                         label="Site internet"
                         value={state.siteUrl}
                       />
+                      <p className="mt-1 text-sm text-gray-400">Faite découvrir votre site web et vos autres liens utiles</p>
                     </div>
                     <div className="sm:col-span-3">
                       <TextInput
@@ -429,7 +432,7 @@ const BusinessInformationsPage = ({ business }) => {
                       toast.success("Modification enregistrée.");
                     }}
                   >
-                    Modifier
+                    Valider
                   </Button>
                 </div>
               </div>
@@ -533,7 +536,7 @@ const BusinessInformationsPage = ({ business }) => {
                       toast.success("Modification enregistrée.");
                     }}
                   >
-                    Modifier
+                    Valider
                   </Button>
                 </div>
               </div>

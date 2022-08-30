@@ -178,14 +178,19 @@ const BusinessPage = ({ business }) => {
                           value={business?.name}
                           disabled={true}
                         />
+                        <p className="mt-1 text-sm text-gray-400">Cette information sera visible par vos clients</p>
                       </div>
                       <div className="col-span-3 sm:col-span-2">
                         <TextInput
                           label="Numéro SIRET"
-                          onChange={() => {}}
-                          value={business?.siret}
-                          disabled={true}
+                          onChange={(e) => {
+                            setState({ ...state, siret: e.target.value });
+                          }}
+                          value={state.siret}
+                          alert={!state.iban || state.iban.length < 14}
+                          error={!state.iban || state.iban.length < 14}
                         />
+                        <p className="mt-1 text-sm text-gray-400">Nous permet de vous garantir des transactions 100% sécurisées !</p>
                       </div>
                       <div className="col-span-3 sm:col-span-2">
                         <TextInput
@@ -194,6 +199,7 @@ const BusinessPage = ({ business }) => {
                           value={`${business.address}, ${business.zipCode} ${business.city}, ${business.country}`}
                           disabled={true}
                         />
+                        <p className="mt-1 text-sm text-gray-400">Cette information sera visible par vos clients. Vous pouvez ajoutez plusieurs points de vente à votre établissement dans le chapitré "Mes Adresses"</p>
                       </div>
                       <div className="col-span-3 sm:col-span-2">
                         <TextInput
@@ -206,6 +212,7 @@ const BusinessPage = ({ business }) => {
                           error={!state.iban || state.iban.length != 27}
                           disabled={true}
                         />
+                        <p className="mt-1 text-sm text-gray-400">Nous permet de vous garantir des transactions 100% conformes !</p>
                       </div>
                       <div className="col-span-3 sm:col-span-2">
                         <TextInput
@@ -239,6 +246,9 @@ const BusinessPage = ({ business }) => {
                         <p className="px-4 pt-2 text-red-400">
                           {state?.etActivity?.ActivityDescription?.Comment}
                         </p>
+                        <p className="mt-1 text-sm text-gray-400">Cette information est indiqué sur votre justificatif d'activité. (ex. titre de votre code APE, NAF)</p>
+                        <p className="mt-1 text-sm text-gray-400">Attention ne modifiez pas cette description si votre compte a déjà été validé (voyany vert).</p>
+                        <p className="mt-1 text-sm text-gray-400">Cette information est soumise à validation par notre intermédiaire de paiement et peut engendrer la suspension temporaire de votre activité e-commerce.</p>
                       </div>
                     </div>
                   </div>
@@ -250,6 +260,7 @@ const BusinessPage = ({ business }) => {
                           variables: {
                             updateBusinessId: business.id,
                             iban: state.iban.replaceAll(" ", ""),
+                            updateBusinessSiret : state.siret,
                           },
                         });
                         await updateBusinessEtActivity({
@@ -264,8 +275,9 @@ const BusinessPage = ({ business }) => {
                         toast.success("Modification enregistrée.");
                       }}
                     >
-                      {updateBusinessEtActivityLoading ? "..." : "Modifier"}
+                      {updateBusinessEtActivityLoading ? "..." : "Valider"}
                     </Button>
+
                   </div>
                 </div>
               </form>
@@ -285,6 +297,7 @@ const BusinessPage = ({ business }) => {
                           value={state?.owner?.email}
                           disabled={true}
                         />
+                        <p className="mt-1 text-sm text-gray-400">Renseignez l'e-mail du gérant de l'établissement.</p>
                       </div>
                       <div className="sm:col-span-2">
                         <TextInput
@@ -301,6 +314,7 @@ const BusinessPage = ({ business }) => {
                           value={state?.owner?.phone}
                           alert={!state?.owner?.phone}
                         />
+                        <p className="mt-1 text-sm text-gray-400">Renseignez le numéro de portable du gérant de l'étabissement</p>
                       </div>
                       <div className="sm:col-span-3">
                         <TextInput
@@ -366,7 +380,7 @@ const BusinessPage = ({ business }) => {
                         }
                       }}
                     >
-                      Modifier
+                      Valider
                     </Button>
                   </div>
                 </div>

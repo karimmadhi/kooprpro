@@ -139,7 +139,7 @@ export default function createBusiness({ me }) {
                       </div>
                     </div>
                   </div>
-
+{/*
                   <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                     <label
                       htmlFor="first_name"
@@ -158,7 +158,7 @@ export default function createBusiness({ me }) {
                       />
                     </div>
                   </div>
-
+                      */}
                   <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                     <label
                       htmlFor="first_name"
@@ -372,10 +372,12 @@ export default function createBusiness({ me }) {
                     if (!state.name || state.length < 2) {
                       errorsState.name = true;
                     }
+/*
                     if (!state.siret || state.siret.length < 14) {
                       errorsState.siret =
                         "Le SIRET doit contenir 14 caractères";
                     }
+*/
                     if (!state.phone || state.phone.length < 6) {
                       errorsState.phone = true;
                     }
@@ -399,7 +401,7 @@ export default function createBusiness({ me }) {
                         createBusinessLng: place?.geometry?.location.lng(),
                         createBusinessZipCode: address.zipCode,
                         createBusinessPhone: state.phone,
-                        createBusinessSiret: state.siret,
+                        createBusinessSiret: "00000000000000",
                         createBusinessFullAddress: place?.formatted_address,
                       },
                     });

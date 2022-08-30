@@ -1097,6 +1097,7 @@ export type UpdateBusinessMutationVariables = Exact<{
   updateBusinessServices?: Maybe<Scalars['json']>;
   updateBusinessHasFidelity?: Maybe<Scalars['Boolean']>;
   iban?: Maybe<Scalars['String']>;
+  updateBusinessSiret?: Maybe<Scalars['String']>;
   updateBusinessFacebookUrl?: Maybe<Scalars['String']>;
   updateBusinessInstagramUrl?: Maybe<Scalars['String']>;
 }>;
@@ -1106,7 +1107,7 @@ export type UpdateBusinessMutation = (
   { __typename?: 'Mutation' }
   & { updateBusiness?: Maybe<(
     { __typename?: 'Business' }
-    & Pick<Business, 'isValidated' | 'phone' | 'siteUrl' | 'companyType' | 'description' | 'services' | 'hasFidelity' | 'fidelityCount' | 'fidelityPercentage' | 'iban' | 'facebookUrl' | 'instagramUrl'>
+    & Pick<Business, 'isValidated' | 'phone' | 'siteUrl' | 'companyType' | 'description' | 'services' | 'hasFidelity' | 'fidelityCount' | 'fidelityPercentage' | 'iban' | 'siret' |'facebookUrl' | 'instagramUrl'>
   )> }
 );
 
@@ -1940,7 +1941,7 @@ export type UpdateBusinessEtActivityMutationHookResult = ReturnType<typeof useUp
 export type UpdateBusinessEtActivityMutationResult = Apollo.MutationResult<UpdateBusinessEtActivityMutation>;
 export type UpdateBusinessEtActivityMutationOptions = Apollo.BaseMutationOptions<UpdateBusinessEtActivityMutation, UpdateBusinessEtActivityMutationVariables>;
 export const UpdateBusinessDocument = gql`
-    mutation updateBusiness($updateBusinessId: Int!, $updateBusinessIsValidated: Boolean, $updateBusinessPhone: String, $updateBusinessSiteUrl: String, $updateBusinessDescription: String, $updateBusinessCompanyType: String, $updateBusinessServices: json, $updateBusinessHasFidelity: Boolean, $iban: String, $updateBusinessFacebookUrl: String, $updateBusinessInstagramUrl: String) {
+    mutation updateBusiness($updateBusinessId: Int!, $updateBusinessIsValidated: Boolean, $updateBusinessPhone: String, $updateBusinessSiteUrl: String, $updateBusinessDescription: String, $updateBusinessCompanyType: String, $updateBusinessServices: json, $updateBusinessHasFidelity: Boolean, $iban: String, $updateBusinessFacebookUrl: String, $updateBusinessInstagramUrl: String, $updateBusinessSiret: String) {
   updateBusiness(
     id: $updateBusinessId
     isValidated: $updateBusinessIsValidated
@@ -1953,6 +1954,7 @@ export const UpdateBusinessDocument = gql`
     iban: $iban
     facebookUrl: $updateBusinessFacebookUrl
     instagramUrl: $updateBusinessInstagramUrl
+    siret: $updateBusinessSiret
   ) {
     isValidated
     phone
@@ -1966,6 +1968,7 @@ export const UpdateBusinessDocument = gql`
     iban
     facebookUrl
     instagramUrl
+    siret
   }
 }
     `;
