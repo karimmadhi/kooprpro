@@ -120,7 +120,7 @@ const BusinessInformationsPage = ({ business }) => {
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
                       Ces informations sont visibles sur votre page dans
-                      l'application Koopr
+                      l'application OFLO
                     </p>
                   </div>
 
@@ -446,19 +446,21 @@ const BusinessInformationsPage = ({ business }) => {
                       {/* {(!business.description || !business.phone) && (
                         <span className=" h-6 px-0.5 py-1 mr-2 text-xs text-white bg-red-500 "></span>
                       )} */}
-                      Koopr Addict
+                      Local'Addict
                     </h3>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Pour activer, désactiver ou modifier votre programme de fidélité, veuillez prendre contact avec votre conseiller OFLO.
+                    </p>
                   </div>
-
-                  <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-12">
+                    {/*<div className="col-span-12">
                       <Switch.Group>
                         <div className="flex items-center">
-                          <Switch.Label className="mr-4">
-                            {enabled
-                              ? "Offre de fidélité active"
-                              : "Offre de fidélité inactive"}
-                          </Switch.Label>
+                            <Switch.Label className="mr-4">
+                              {enabled
+                                ? "Offre de fidélité active"
+                                : "Offre de fidélité inactive"}
+                            </Switch.Label>
+                          </div>
                           <Switch
                             checked={enabled}
                             onChange={setEnabled}
@@ -471,12 +473,22 @@ const BusinessInformationsPage = ({ business }) => {
                                 enabled ? "translate-x-6" : "translate-x-1"
                               } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
                             />
-                          </Switch>
+                            </Switch>
                         </div>
                       </Switch.Group>
-                    </div>
-                    {enabled && (
+                    </div>*/}
+                    {!business.hasFidelity && (
                       <>
+                        <span className="w-250 flex flex-row">
+                          Programme de fidélité :<span className="text-OFLO_orange">&nbsp;inactif</span>
+                        </span>
+                      </>
+                    )}
+                    {business.hasFidelity && (
+                      <>
+                        <span className="w-250 flex flex-row">
+                          Programme de fidélité :<span className="text-green-500">&nbsp;actif</span>
+                        </span>
                         <div className="col-span-5 md:col-span-3">
                           <TextInput
                             disabled={true}
@@ -487,19 +499,18 @@ const BusinessInformationsPage = ({ business }) => {
                             value={state.fidelityPercentage}
                           />
                         </div>
-                        <div className="col-span-8">
+                        <div className="col-span-5 md:col-span-3">
                           <TextInput
                             disabled={true}
                             onChange={(e) => {
                               setState({ ...state, siteUrl: e.target.value });
                             }}
-                            label="Nombre d'achat necessaire"
+                            label="Nombre d'achats nécessaires"
                             value={state.fidelityCount}
                           />
                         </div>
                       </>
                     )}
-
                     {/* <div className="col-span-6 sm:col-span-3">
                       <label
                         htmlFor="last_name"
@@ -515,7 +526,6 @@ const BusinessInformationsPage = ({ business }) => {
                         className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                       />
                     </div> */}
-                  </div>
                 </div>
                 <ErrorNotification
                   error={
@@ -524,7 +534,7 @@ const BusinessInformationsPage = ({ business }) => {
                   }
                 />
                 <div className="px-4 py-3 text-right bg-OFLO_darkblue sm:px-6">
-                  <Button
+                  {/*<Button
                     onClick={async (e) => {
                       e.preventDefault();
                       await updateBusiness({
@@ -536,8 +546,13 @@ const BusinessInformationsPage = ({ business }) => {
                       toast.success("Modification enregistrée.");
                     }}
                   >
+<<<<<<< Updated upstream
                     Valider
                   </Button>
+=======
+                    Modifier
+                  </Button>*/}
+>>>>>>> Stashed changes
                 </div>
               </div>
             </form>
