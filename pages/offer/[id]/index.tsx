@@ -90,7 +90,7 @@ const OfferPage = ({ offer }) => {
   const { addToast } = useToasts();
   return (
     <main>
-      <div className="py-10 ">
+      <div className="py-5 ">
         <Container>
           <Link href="/offer">
             <span className="flex flex-row mb-2 -mt-2 font-medium text-OFLO_orange cursor-pointer hover:text-OFLO_darkblue">
@@ -117,7 +117,7 @@ const OfferPage = ({ offer }) => {
                 <div className="flex flex-row items-center ">
                   <div
                     className={`rounded-full bg-gray-600 w-3 h-3 mr-2 ${
-                      offer.isActive ? "bg-green-500" : "bg-red-500"
+                      offer.isActive ? "bg-OFLO_pastel" : "bg-OFLO_orange"
                     } `}
                   />
                   <h2 className="text-2xl font-bold uppercase leading-7 sm:text-3xl sm:truncate">
@@ -141,54 +141,56 @@ const OfferPage = ({ offer }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex mt-5 lg:mt-0 lg:ml-4">
-                <span className="sm:ml-3">
-                  <button
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      let error = false;
-                      if (moment(offer.expireAt).isBefore(new Date()))
-                        error = true;
-                      if (error) {
-                        addToast(
-                          "Cette offre a expirée, impossible de l'activer",
-                          {
-                            appearance: "error",
-                          }
-                        );
-                        return;
-                      }
-                      await updateOffer({
-                        variables: {
-                          updateOfferId: offer.id,
-                          updateOfferIsActive: !offer.isActive,
-                        },
-                      });
-                      addToast("Modification effectuée", {
-                        appearance: "success",
-                      });
-                    }}
-                    className={`${
-                      offer.isActive
-                        ? "bg-red-500 hover:bg-red-600"
-                        : "bg-green-500 hover:bg-green-600"
-                    } inline-flex items-center px-4 py-2 text-sm font-medium text-white  border border-transparent rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-orange-500`}
-                  >
-                    {offer.isActive ? (
-                      <XIcon
-                        className="w-5 h-5 mr-2 -ml-1"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <CheckIcon
-                        className="w-5 h-5 mr-2 -ml-1"
-                        aria-hidden="true"
-                      />
-                    )}
-                    {offer.isActive ? "Désactiver l'offre" : "Activer l'offre"}
-                  </button>
-                </span>
-              </div>
+              {!offer.isFlagship && (
+                <div className="flex mt-5 lg:mt-0 lg:ml-4">
+                  <span className="sm:ml-3">
+                    <button
+                      onClick={async (e) => {
+                        e.preventDefault();
+                        let error = false;
+                        if (moment(offer.expireAt).isBefore(new Date()))
+                          error = true;
+                        if (error) {
+                          addToast(
+                            "Cette offre a expirée, impossible de l'activer",
+                            {
+                              appearance: "error",
+                            }
+                          );
+                          return;
+                        }
+                        await updateOffer({
+                          variables: {
+                            updateOfferId: offer.id,
+                            updateOfferIsActive: !offer.isActive,
+                          },
+                        });
+                        addToast("Modification effectuée", {
+                          appearance: "success",
+                        });
+                      }}
+                      className={`${
+                        offer.isActive
+                          ? "bg-OFLO_orange hover:bg-red-500"
+                          : "bg-OFLO_pastel text-OFLO_darkblue hover:bg-green-500"
+                      } inline-flex items-center px-4 py-2 text-sm font-medium text-white  border border-transparent rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-orange-500`}
+                    >
+                      {offer.isActive ? (
+                        <XIcon
+                          className="w-5 h-5 mr-2 -ml-1"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <CheckIcon
+                          className="w-5 h-5 mr-2 -ml-1"
+                          aria-hidden="true"
+                        />
+                      )}
+                      {offer.isActive ? "Désactiver l'offre" : "Activer l'offre"}
+                    </button>
+                  </span>
+                </div>
+              )}
             </div>
           </Section>
         </Container>
@@ -216,7 +218,7 @@ const OfferPage = ({ offer }) => {
                 </div>
               </div>
             </div>
-            <div className="flex border-b border-accents mr-4 justify-center pb-4">
+            <div className="flex border-b border-black mr-4 justify-center pb-4">
               <img
                 src={offer?.imageUrl}
                 alt="Photo de l'offre"
@@ -227,7 +229,7 @@ const OfferPage = ({ offer }) => {
             </div>
             <div className="mt-4">
               <dl className="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3">
-                <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+                <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow hover:shadow-lg sm:pt-6 sm:px-6">
                   <dt>
                     <div className="absolute p-3 bg-OFLO_purple rounded-md">
                       <CursorClickIcon className="w-6 h-6 text-white" />
@@ -274,7 +276,7 @@ const OfferPage = ({ offer }) => {
                   </dd>
                 </div>
 
-                <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+                <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg hover:shadow-lg shadow sm:pt-6 sm:px-6">
                   <dt>
                     <div className="absolute p-3 bg-OFLO_purple rounded-md">
                       <ShoppingCartIcon className="w-6 h-6 text-white" />
@@ -318,7 +320,7 @@ const OfferPage = ({ offer }) => {
                   </dd>
                 </div>
 
-                <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
+                <div className="relative px-4 pt-5 overflow-hidden bg-white rounded-lg hover:shadow-lg shadow sm:pt-6 sm:px-6">
                   <dt>
                     <div className="absolute p-3 bg-OFLO_purple rounded-md">
                       <CurrencyEuroIcon className="w-6 h-6 text-white" />

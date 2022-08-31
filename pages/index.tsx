@@ -56,6 +56,27 @@ const BUSINESS_DASHBOARD_QUERY = gql`
   }
 `;
 
+const BUSINESS_COUPONS_QUERY = gql`
+  query businessCoupons($id: Int!, $search: String) {
+    business(id: $id) {
+      id
+      coupons(search: $search) {
+        id
+        uid{
+          firstName
+          lastName
+        }
+        createdAt
+        expiredAt
+        offer {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
 export default function Home({ me }) {
   useEffect(() => {
     if (!me) {
@@ -383,6 +404,7 @@ export default function Home({ me }) {
               }}
               columns={[
                 { value: "N°", key: "id" },
+                { value: "Client", key: "firstName"},
                 { value: "Crée le", key: "createdAt" },
                 { value: "Montant", key: "virAmount" },
                 { value: "status", key: "status" },

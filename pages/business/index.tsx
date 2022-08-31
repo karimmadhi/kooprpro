@@ -194,7 +194,7 @@ const BusinessPage = ({ business }) => {
                       </div>
                       <div className="col-span-3 sm:col-span-2">
                         <TextInput
-                          label="Adresse"
+                          label="Adresse postale"
                           onChange={() => {}}
                           value={`${business.address}, ${business.zipCode} ${business.city}, ${business.country}`}
                           disabled={true}
