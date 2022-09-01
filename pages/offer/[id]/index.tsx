@@ -120,9 +120,21 @@ const OfferPage = ({ offer }) => {
                       offer.isActive ? "bg-OFLO_pastel" : "bg-OFLO_orange"
                     } `}
                   />
-                  <h2 className="text-2xl font-bold uppercase leading-7 sm:text-3xl sm:truncate">
-                    {offer.name}
-                  </h2>
+                  {offer.isEvent && (
+                    <h2 className="text-2xl font-bold uppercase leading-7 sm:text-3xl sm:truncate">
+                      Bon plan / Événement : {offer.name}
+                    </h2>
+                  )}
+                  {!offer.isEvent && !offer.isFlagship && (
+                    <h2 className="text-2xl font-bold uppercase leading-7 sm:text-3xl sm:truncate">
+                      Offre flash : {offer.name}
+                    </h2>
+                  )}
+                  {offer.isFlagship && (
+                    <h2 className="text-2xl font-bold uppercase leading-7 sm:text-3xl sm:truncate">
+                      Offre Phare : {offer.name}
+                    </h2>
+                  )}
                 </div>
                 <div className="flex flex-col mt-1 sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                   <div className="flex items-center mt-2 text-sm text-black">
@@ -197,19 +209,6 @@ const OfferPage = ({ offer }) => {
         <Container>
           <Section>
             <div className="flex flex-col justify-between w-full pb-4 border-accents3 sm:flex-row">
-              {offer.isFlagship && (
-                <div className="py-2 mt-4 sm:mt-0">
-                  <div>
-                    <h2 className="uppercase font-bold">Offre Phare</h2>
-                  </div>
-                </div>
-              )}
-              <div className="py-2 mt-4 sm:mt-0">
-                {offer.isEvent && (
-                  <div>
-                    <p className="font-bold text-md">Offre évenementiel</p>
-                  </div>
-                )}
                 <div>
                   <p className="text-xl">Quantité vendue {offer.isFlagship && "aujourd'hui"}</p>
                   <p className="text-xl text-center">
@@ -217,7 +216,6 @@ const OfferPage = ({ offer }) => {
                   </p>
                 </div>
               </div>
-            </div>
             <div className="flex border-b border-black mr-4 justify-center pb-4">
               <img
                 src={offer?.imageUrl}

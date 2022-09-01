@@ -52,7 +52,7 @@ export default function NavBar({ pages, me }: NavProps) {
               <img
                 className="w-auto h-8 sm:h-10"
                 src="/logo.png"
-                alt="logo Koopr"
+                alt="logo OFLO"
               />
             </a>
           </div>

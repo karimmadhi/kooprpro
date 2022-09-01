@@ -546,13 +546,10 @@ const BusinessInformationsPage = ({ business }) => {
                       toast.success("Modification enregistrée.");
                     }}
                   >
-<<<<<<< Updated upstream
                     Valider
                   </Button>
-=======
                     Modifier
                   </Button>*/}
->>>>>>> Stashed changes
                 </div>
               </div>
             </form>
