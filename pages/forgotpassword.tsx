@@ -119,7 +119,7 @@ export default function forgotPassword() {
             <p className="font-extrabold">Retour à la page de connexion</p>
           </div>
           <Link href="/signin">
-            <div className="flex items-center justify-center w-1/2 h-12 mx-auto my-5 border-2 border-gray-600 rounded-full cursor-pointer">
+            <div className="flex items-center justify-center w-1/2 h-12 mx-auto my-5 bg-OFLO_pastel text-OFLO_darkblue hover:bg-OFLO_purple hover:text-white rounded-full cursor-pointer">
               <a className="text-xs font-bold uppercase ">Connexion</a>
             </div>
           </Link>

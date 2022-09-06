@@ -99,7 +99,7 @@ export default function signIn({ me }) {
               <div className="text-sm">
                 <a
                   href="/forgotpassword"
-                  className="font-medium text-orange-600 hover:text-orange-500"
+                  className="font-medium text-OFLO_darkblue hover:text-OFLO_purple"
                 >
                   Mot de passe oublié ?
                 </a>
@@ -135,7 +135,7 @@ export default function signIn({ me }) {
                     toast.error("L'authentification a échouée.");
                   }
                 }}
-                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-orange-600 border border-transparent rounded-md shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-OFLO_darkblue border bg-OFLO_pastel border-transparent rounded-md shadow-sm hover:text-white hover:bg-OFLO_purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Se connecter
               </Button>
@@ -154,7 +154,7 @@ export default function signIn({ me }) {
             <div className="mt-6">
               <a
                 href="/signup"
-                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-orange-600 bg-white border border-transparent rounded-md shadow-sm hover:border-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-OFLO_darkblue bg-OFLO_pastel border border-transparent rounded-md shadow-sm hover:bg-OFLO_purple hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Créer un compte professionnel
               </a>

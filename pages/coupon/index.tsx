@@ -53,7 +53,7 @@ export default function coupons({ me }) {
       <div className="py-10">
         <Container>
           <Section>
-            <h2 className="title is-2">Coupons</h2>
+            <h1 className="title is-2 text-OFLO_orange uppercase font-bold">Coupons</h1>
             <p className="text-accents6">Liste de vos coupons vendus</p>
           </Section>
           <Section>
