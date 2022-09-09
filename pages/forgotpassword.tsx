@@ -23,7 +23,7 @@ export default function forgotPassword() {
               avec un lien de réinitialisation de mot de passe
             </p>
             <a
-              className="font-bold text-blue-700 cursor-pointer"
+              className="font-bold text-OFLO_darkblue hover:text-OFLO_purple cursor-pointer"
               onClick={() => {
                 setSuccess(false);
                 setEmail("");
@@ -36,7 +36,7 @@ export default function forgotPassword() {
               <p className="font-extrabold">Retour à la page de connexion</p>
             </div>
             <Link href="/signin">
-              <div className="flex items-center justify-center w-1/2 h-12 mx-auto my-5 border-2 border-gray-600 rounded-full cursor-pointer">
+              <div className="flex items-center justify-center w-1/2 h-12 mx-auto my-5 bg-OFLO_pastel text-OFLO_darkblue hover:bg-OFLO_purple hover:text-white rounded-full cursor-pointer">
                 <a className="text-xs font-bold uppercase ">Connexion</a>
               </div>
             </Link>

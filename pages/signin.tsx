@@ -154,7 +154,7 @@ export default function signIn({ me }) {
             <div className="mt-6">
               <a
                 href="/signup"
-                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-OFLO_darkblue bg-OFLO_pastel border border-transparent rounded-md shadow-sm hover:bg-OFLO_purple hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="flex justify-center w-full px-4 py-2 text-sm font-medium text-OFLO_darkblue bg-OFLO_pastel border border-transparent rounded-md shadow-sm hover:bg-OFLO_purple hover:text-white"
               >
                 Créer un compte professionnel
               </a>

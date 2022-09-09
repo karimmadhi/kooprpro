@@ -247,7 +247,7 @@ const BusinessPage = ({ business }) => {
                           {state?.etActivity?.ActivityDescription?.Comment}
                         </p>
                         <p className="mt-1 text-sm text-gray-400">Cette information est indiqué sur votre justificatif d'activité. (ex. titre de votre code APE, NAF)</p>
-                        <p className="mt-1 text-sm text-gray-400">Attention ne modifiez pas cette description si votre compte a déjà été validé (voyany vert).</p>
+                        <p className="mt-1 text-sm text-gray-400">Attention ne modifiez pas cette description si votre compte a déjà été validé (voyant vert).</p>
                         <p className="mt-1 text-sm text-gray-400">Cette information est soumise à validation par notre intermédiaire de paiement et peut engendrer la suspension temporaire de votre activité e-commerce.</p>
                       </div>
                     </div>
@@ -314,7 +314,7 @@ const BusinessPage = ({ business }) => {
                           value={state?.owner?.phone}
                           alert={!state?.owner?.phone}
                         />
-                        <p className="mt-1 text-sm text-gray-400">Renseignez le numéro de portable du gérant de l'étabissement</p>
+                        <p className="mt-1 text-sm text-gray-400">Renseignez le numéro de portable du gérant de l'étabissement.</p>
                       </div>
                       <div className="sm:col-span-3">
                         <TextInput
