@@ -187,8 +187,7 @@ const BusinessPage = ({ business }) => {
                             setState({ ...state, siret: e.target.value });
                           }}
                           value={state.siret}
-                          alert={!state.iban || state.iban.length < 14}
-                          error={!state.iban || state.iban.length < 14}
+                          alert={errors?.siret}
                         />
                         <p className="mt-1 text-sm text-gray-400">Nous permet de vous garantir des transactions 100% sécurisées !</p>
                       </div>
@@ -256,6 +255,16 @@ const BusinessPage = ({ business }) => {
                     <Button
                       onClick={async (e) => {
                         e.preventDefault();
+                        setErrors({});
+                        let errorsState: any = {};
+                        if (!state.siret || state.siret.length < 14) {
+                          errorsState.siret =
+                            "Le SIRET doit contenir 14 caractères";
+                        }
+                        if (Object.keys(errorsState).length > 0) {
+                          setErrors(errorsState);
+                          return;
+                        }
                         await updateBusiness({
                           variables: {
                             updateBusinessId: business.id,

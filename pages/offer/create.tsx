@@ -15,6 +15,7 @@ import { SingleDatePicker } from "react-dates";
 import Loader from "../../components/Loader";
 import { gql } from "@apollo/client";
 import AddressesSelector from "components/AddressesSelector";
+import OfferTypeSelector from "components/OfferTypeSelector";
 import GridPicture from "components/GridPicture";
 import toast from "react-hot-toast";
 import Button from "components/Button";
@@ -259,6 +260,19 @@ export default function createOffer({ me }) {
                     </div>
                   )}
                   <div className="grid grid-cols-1 mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <div className="sm:col-span-4">
+                    <label className="block mb-1 text-sm font-medium text-gray-700">Type de l'offre</label>
+                      <OfferTypeSelector
+                        onSelection={(option) => {
+                          setState({
+                            ...state,
+                            address: option,
+                          });
+                        }}
+                        value={state?.address}
+                      />
+                    </div>
+
                     <div className="sm:col-span-4">
                       <TextInput
                         required={true}

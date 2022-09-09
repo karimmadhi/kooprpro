@@ -321,7 +321,7 @@ const BusinessInformationsPage = ({ business }) => {
                       toast.success("Modification enregistrée.");
                     }}
                   >
-                    Modifier
+                    Valider
                   </Button>
                 </div>
               </div>
