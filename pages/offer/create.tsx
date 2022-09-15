@@ -15,12 +15,13 @@ import { SingleDatePicker } from "react-dates";
 import Loader from "../../components/Loader";
 import { gql } from "@apollo/client";
 import AddressesSelector from "components/AddressesSelector";
-import OfferTypeSelector from "components/OfferTypeSelector";
 import GridPicture from "components/GridPicture";
 import toast from "react-hot-toast";
 import Button from "components/Button";
 import DatePicker, { registerLocale } from "react-datepicker";
 import { fr } from "date-fns/locale";
+import Select from "react-select";
+import { handleInputChange } from "react-select/src/utils";
 registerLocale("fr", fr);
 
 const IMAGE_BANKS_QUERY = gql`
@@ -99,6 +100,18 @@ const CREATE_OFFER_MUTATION = gql`
     }
   }
 `;
+
+const offerTypes = [
+  { value: false, label: "Offre flash" },
+  { value: true, label: "Bon plan" },
+  { value: true, label: "Evênement" },
+];
+
+const productTypes = [
+  { value: "10", label: "Produit ( non périssable )" },
+  { value: "1", label: "Alimentaire ( périssable )" },
+  { value: "90", label: "Services" },
+];
 
 const ImageBankSection = ({ state, setState, errors }) => {
   const [search, setSearch] = useState("");
@@ -197,7 +210,7 @@ export default function createOffer({ me }) {
     startAt: moment(),
     expireAt: "24",
     expireAtEvent: moment().add(1, "week"),
-    couponValidUntil: "10",
+    couponValidUntil: "",
     imageUrl: "",
     address: null,
     file: null,
@@ -232,47 +245,29 @@ export default function createOffer({ me }) {
                       Ces informations seront affichées dans l'offre
                     </p>
                   </div>
-                  {me?.business?.hasEvents === true && (
-                    <div className="mt-6 sm:col-span-6">
-                      <div className="relative flex items-start">
-                        <div className="flex items-center h-5">
-                          <input
-                            id="comments"
-                            name="comments"
-                            type="checkbox"
-                            checked={state.isEvent}
-                            onChange={(e) => {
-                              setState({ ...state, isEvent: !state.isEvent });
-                            }}
-                            className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                          />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label htmlFor="comments" className="font-medium">
-                            L'offre est un bon plan
-                          </label>
-                          <p className="text-gray-500">
-                            Celle-ci ne pourra pas être achetée sur
-                            l’application
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                   <div className="grid grid-cols-1 mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
-                    <div className="sm:col-span-4">
-                    <label className="block mb-1 text-sm font-medium text-gray-700">Type de l'offre</label>
-                      <OfferTypeSelector
-                        onSelection={(option) => {
-                          setState({
-                            ...state,
-                            address: option,
-                          });
-                        }}
-                        value={state?.address}
-                      />
-                    </div>
-
+                    {me?.business?.hasEvents === false && (
+                      <div className="sm:col-span-4">
+                        <label className="block mb-1 text-sm font-medium text-gray-700">
+                          Type de l'offre
+                        </label>
+                        <Select
+                          defaultValue={offerTypes[0]}
+                          placeholder="Selectionnez un type"
+                          isMulti={false}
+                          options={offerTypes}
+                          styles={{
+                            option: (provided, state) => ({
+                              ...provided,
+                              color: "black",
+                            }),
+                          }}
+                          onChange={(choice) =>
+                            setState({ ...state, isEvent: choice.value })
+                          }
+                        />
+                      </div>
+                    )}
                     <div className="sm:col-span-4">
                       <TextInput
                         required={true}
@@ -438,6 +433,28 @@ export default function createOffer({ me }) {
                         />
                       </div>
                       <div className="col-span-6 sm:col-span-3 md:col-span-2">
+                        <label className="block mb-1 text-sm font-medium text-gray-700">
+                          Typologie de l’offre flash
+                        </label>
+                        <Select
+                          placeholder="Selectionnez une typologie"
+                          isMulti={false}
+                          options={productTypes}
+                          styles={{
+                            option: (provided, state) => ({
+                              ...provided,
+                              color: "black",
+                            }),
+                          }}
+                          onChange={(choice) =>
+                            setState({
+                              ...state,
+                              couponValidUntil: choice.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3 md:col-span-2">
                         <TextInput
                           type="number"
                           inputMode="decimal"
@@ -509,6 +526,42 @@ export default function createOffer({ me }) {
                           Durée de diffusion
                         </label>
                         <div className="mt-4 space-y-4">
+                          <div className="flex items-center">
+                            <input
+                              checked={state.expireAt === "6"}
+                              onChange={(e) =>
+                                setState({ ...state, expireAt: "6" })
+                              }
+                              id="6h"
+                              name="6h"
+                              type="radio"
+                              className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                            />
+                            <label
+                              htmlFor="6h"
+                              className="block ml-3 text-sm font-medium text-gray-700"
+                            >
+                              6h
+                            </label>
+                          </div>
+                          <div className="flex items-center">
+                            <input
+                              checked={state.expireAt === "12"}
+                              onChange={(e) =>
+                                setState({ ...state, expireAt: "12" })
+                              }
+                              id="12h"
+                              name="12h"
+                              type="radio"
+                              className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                            />
+                            <label
+                              htmlFor="12h"
+                              className="block ml-3 text-sm font-medium text-gray-700"
+                            >
+                              12h
+                            </label>
+                          </div>
                           <div className="flex items-center">
                             <input
                               checked={state.expireAt === "24"}
