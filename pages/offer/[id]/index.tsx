@@ -116,7 +116,7 @@ const OfferPage = ({ offer }) => {
               <div className="flex-1 min-w-0 justify-center">
                 <div className="flex flex-row items-center ">
                   <div
-                    className={`rounded-full bg-gray-600 w-3 h-3 mr-2 ${
+                    className={`rounded-full w-3 h-3 mr-2 ${
                       offer.isActive ? "bg-OFLO_pastel" : "bg-OFLO_orange"
                     } `}
                   />
